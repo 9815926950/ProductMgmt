@@ -12,6 +12,7 @@ namespace ProductMgmt.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.Message="Hello";
             return View();
         }
 
