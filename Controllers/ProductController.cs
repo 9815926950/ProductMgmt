@@ -51,7 +51,26 @@ namespace ProductMgmt.Controllers {
 
         }
         public IActionResult Edit (int id) {
-            return View ();
+            var product = _context.Products.FirstOrDefault(x=>x.Id ==id);
+            return View (product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product){
+            try {
+                _context.Products.Update (product); // to save in database 
+                _context.SaveChanges (); // to save in database
+
+                _clientNotification.AddToastNotification ("Product updated successfully",
+                    NotificationType.success,
+                    null);
+            } catch (Exception) {
+                _clientNotification.AddToastNotification ("Could not update product",
+                    NotificationType.error,
+                    null);
+            }
+
+            return RedirectToAction (nameof (Index));
         }
         public IActionResult Delete (int id) {
             try {

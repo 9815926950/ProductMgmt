@@ -21,7 +21,10 @@
                 <p>Price: @product.Price.ToString("#.##")</p>
             </div>
             <div class="panel-footer">
-                <a class="btn btn-primary">Edit</a>
+                <a class="btn btn-primary"
+                    asp-controller="Product"
+                    asp-action="Edit"
+                    asp-route-id="@product.Id">Edit</a>
                 <a class="btn btn-danger" 
                     asp-controller="Product" 
                     asp-action="Delete" 
