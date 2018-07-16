@@ -2,8 +2,32 @@
 
 <h2>All Products</h2>
 
+
+
+
+
+
+<div class="row">
+
 @foreach(var product in Model){
-    <p>Name: @product.ProductName </p>
-    <p>Quantity: @product.Quantity</p>
-    <p>Price: @product.Price</p>
+    <div class="col col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                @product.ProductName
+            </div>
+            <div class="panel-body">
+                <p>Name: @product.ProductName </p>
+                <p>Quantity: @product.Quantity</p>
+                <p>Price: @product.Price.ToString("#.##")</p>
+            </div>
+            <div class="panel-footer">
+                <a class="btn btn-primary">Edit</a>
+                <a class="btn btn-danger" 
+                    asp-controller="Product" 
+                    asp-action="Delete" 
+                    asp-route-id="@product.Id">Delete</a>
+            </div>
+        </div>
+    </div>
 }
+</div>

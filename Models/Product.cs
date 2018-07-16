@@ -20,6 +20,8 @@ namespace ProductMgmt.Models
         [Display(Name="Price")]
         public decimal Price{get; set;}
 
+        public string CreatedBy { get; set; }
+
         public DateTime CreatedAt{get; set;}
 
 
