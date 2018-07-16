@@ -16,6 +16,7 @@ namespace ProductMgmt.Controllers {
 
         }
         public IActionResult Index () {
+            ViewBag.Message = "Hello";
             var products = _context.Products.ToList ();
             return View (products);
         }
