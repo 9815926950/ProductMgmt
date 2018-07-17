@@ -26,23 +26,29 @@ namespace ProductMgmt.Controllers {
 
         [HttpGet]
         public IActionResult New () {
+            ViewBag.IsEditMode = "false";
             return View (new Product());
         }
 
         [HttpPost]
-        public IActionResult New (Product product) {
+        public IActionResult New (Product product, string IsEditMode) {
             if (!ModelState.IsValid)
                 return View (product);
 
             try {
-                _context.Products.Add (product); // to save in database 
-                _context.SaveChanges (); // to save in database
-
-                _clientNotification.AddToastNotification ("Product added successfully",
+                if(IsEditMode.Equals("false")){
+                    _context.Products.Add (product); // to save in database 
+                    _context.SaveChanges (); // to save in database
+                } else {
+                    _context.Products.Update(product);
+                    _context.SaveChanges();
+                }
+                
+                _clientNotification.AddToastNotification ("Product added or updated successfully",
                     NotificationType.success,
                     null);
             } catch (Exception) {
-                _clientNotification.AddToastNotification ("Could not add product",
+                _clientNotification.AddToastNotification ("Could not add or update product",
                     NotificationType.error,
                     null);
             }
@@ -51,27 +57,13 @@ namespace ProductMgmt.Controllers {
 
         }
         public IActionResult Edit (int id) {
+            ViewBag.IsEditMode = "true";
             var product = _context.Products.FirstOrDefault(x=>x.Id ==id);
-            return View (product);
+            return View ("New",product);
         }
 
         [HttpPost]
-        public IActionResult Edit(Product product){
-            try {
-                _context.Products.Update (product); // to save in database 
-                _context.SaveChanges (); // to save in database
-
-                _clientNotification.AddToastNotification ("Product updated successfully",
-                    NotificationType.success,
-                    null);
-            } catch (Exception) {
-                _clientNotification.AddToastNotification ("Could not update product",
-                    NotificationType.error,
-                    null);
-            }
-
-            return RedirectToAction (nameof (Index));
-        }
+       
         public IActionResult Delete (int id) {
             try {
                 var product = _context.Products.FirstOrDefault (x => x.Id == id);
