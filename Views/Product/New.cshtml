@@ -1,32 +1,44 @@
 @model Product
-
+<h1>Student Form</h1>
 <div class="row">
-    <form asp-action="New" method="POST" asp-controller="Product">
-    <input type="hidden" asp-for="Id"/>
-    <input type="hidden" name="IsEditMode" id="IsEditMode" value="@ViewBag.IsEditMode"/>
-
-    <div class="form-group">
-        <label asp-for="ProductName"></label>
-        <input type="text" asp-for="ProductName" class="form-control"/>
-        <span asp-validation-for="ProductName" class="text-danger"></span>
-    </div>
-   
-    <div class="form-group">
-        <label asp-for="Quantity"></label>
-        <input type="text" asp-for="Quantity" class="form-control"/>
-        <span asp-validation-for="Quantity" class="text-danger"></span>
-    </div>
+    <div class="col col-sm-8">
+        <div class="panel panel-primary">
     
-    <div class="form-group">
-        <label asp-for="Price"></label>
-        <input type="text" asp-for="Price" class="form-control"/>
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
+            <div class="panel-heading">
+                <p>Student</p>
+            </div>
+            <div class="panel-body">
+                <form asp-action="New" method="POST" asp-controller="Product">
+                <input type="hidden" asp-for="Id"/>
+                <input type="hidden" name="IsEditMode" id="IsEditMode" value="@ViewBag.IsEditMode"/>
 
-    <div class="form-group">
-        <input type="submit" value="Save"/>
-    </div>
-    
+                <div class="form-group">
+                    <label asp-for="ProductName"></label>
+                    <input type="text" asp-for="ProductName" class="form-control"/>
+                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label asp-for="Quantity"></label>
+                    <input type="text" asp-for="Quantity" class="form-control"/>
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input type="text" asp-for="Price" class="form-control"/>
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-danger" value="Save"/>
+                    <input type="reset" class="btn btn-primary" value="Cancel"/>
+
+                </div>
+            </div>    
     </form>
+    </div>
+    </div>
     
 </div>

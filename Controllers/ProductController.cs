@@ -37,13 +37,13 @@ namespace ProductMgmt.Controllers {
 
             try {
                 if(IsEditMode.Equals("false")){
-                    _context.Products.Add (product); // to save in database 
+                    _context.Products.Add (product); // to save in database
                     _context.SaveChanges (); // to save in database
                 } else {
                     _context.Products.Update(product);
                     _context.SaveChanges();
                 }
-                
+
                 _clientNotification.AddToastNotification ("Product added or updated successfully",
                     NotificationType.success,
                     null);
@@ -62,8 +62,8 @@ namespace ProductMgmt.Controllers {
             return View ("New",product);
         }
 
-        [HttpPost]
-       
+        // [HttpPost]
+
         public IActionResult Delete (int id) {
             try {
                 var product = _context.Products.FirstOrDefault (x => x.Id == id);

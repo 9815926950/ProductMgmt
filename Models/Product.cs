@@ -7,7 +7,7 @@ namespace ProductMgmt.Models
     {
         public int Id{get; set;}
        
-        [Required]
+        [Required(ErrorMessage="please enter the valid Name")]
         [MinLength(3,ErrorMessage="The {0} should be greater than or equals to {1} character in length")]
         [Display(Name="Product Name")]
          public string ProductName{get;set;}
@@ -21,7 +21,6 @@ namespace ProductMgmt.Models
         public decimal Price{get; set;}
 
         public string CreatedBy { get; set; }
-
         public DateTime CreatedAt{get; set;}
 
 
