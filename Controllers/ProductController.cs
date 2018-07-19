@@ -7,13 +7,12 @@ using ProductMgmt.Models;
 using static ClientNotifications.Helpers.NotificationHelper;
 
 namespace ProductMgmt.Controllers {
-    public class ProductController : Controller {
+    public class ProductController : BaseController {
         private ApplicationDbContext _context;
-        private IClientNotification _clientNotification;
-        public ProductController (ApplicationDbContext context, IClientNotification clientNotification) {
+        public ProductController (ApplicationDbContext context, IClientNotification clientNotification)
+            :base(clientNotification)
+        {
             _context = context;
-            _clientNotification = clientNotification;
-
         }
         public IActionResult Index () {
             var products = _context.Products.ToList ();
@@ -44,13 +43,9 @@ namespace ProductMgmt.Controllers {
                     _context.SaveChanges();
                 }
 
-                _clientNotification.AddToastNotification ("Product added or updated successfully",
-                    NotificationType.success,
-                    null);
+                Notify("Product created or updated",NotificationType.success,"");
             } catch (Exception) {
-                _clientNotification.AddToastNotification ("Could not add or update product",
-                    NotificationType.error,
-                    null);
+                Notify("Could not create or update product",NotificationType.error,"");
             }
 
             return RedirectToAction (nameof (Index));
@@ -71,13 +66,9 @@ namespace ProductMgmt.Controllers {
                 _context.Products.Remove (product);
                 _context.SaveChanges ();
 
-                _clientNotification.AddToastNotification("Product removed successfully",
-                                                             NotificationType.success,
-                                                             null);
+                Notify("Product removed successfully",NotificationType.success,"");
             } catch (Exception) {
-                _clientNotification.AddToastNotification("Could not remove product",
-                                                             NotificationType.success,
-                                                             null);
+                Notify("Could not remove product",NotificationType.success,"");
             }
 
             return RedirectToAction (nameof (Index)); // to convert into string form you hav 2 option i.e. "Index" or nameof(Index)
