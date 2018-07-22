@@ -25,9 +25,14 @@
                 <a class="btn btn-danger" 
                     asp-controller="Product" 
                     asp-action="Delete" 
-                    asp-route-id="@product.Id">Delete</a>
+                    asp-route-id="@product.Id"
+                    click="return Confirm('Are you sure to delete this?')">Delete</a>
             </div>
         </div>
     </div>
 }
+
+<button class="btn btn-info" id="button1" name="button1">Button1</button>
+<button class="test">I am test button</button>
+<input type="text" id="productName" name="productName"/>
 </div>

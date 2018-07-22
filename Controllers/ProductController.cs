@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductMgmt.Data;
 using ProductMgmt.Models;
 using static ClientNotifications.Helpers.NotificationHelper;
-
+                               
 namespace ProductMgmt.Controllers {
     public class ProductController : BaseController {
         private ApplicationDbContext _context;
