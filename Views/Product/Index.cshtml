@@ -22,11 +22,12 @@
                     asp-controller="Product"
                     asp-action="Edit"
                     asp-route-id="@product.Id">Edit</a>
-                <a class="btn btn-danger" 
-                    asp-controller="Product" 
-                    asp-action="Delete" 
-                    asp-route-id="@product.Id"
-                    click="return Confirm('Are you sure to delete this?')">Delete</a>
+                <button class="btn btn-danger delete" 
+                    data-controller="Product" 
+                    data-action="Delete" 
+                    data-id="@product.Id"
+                    data-body-message="Are you sure want to delete this?"
+                    >Delete</button>
             </div>
         </div>
     </div>

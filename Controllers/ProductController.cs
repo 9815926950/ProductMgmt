@@ -66,12 +66,11 @@ namespace ProductMgmt.Controllers {
                 _context.Products.Remove (product);
                 _context.SaveChanges ();
 
-                Notify("Product removed successfully",NotificationType.success,"");
+                return Ok();
             } catch (Exception) {
-                Notify("Could not remove product",NotificationType.success,"");
+                return BadRequest();
             }
 
-            return RedirectToAction (nameof (Index)); // to convert into string form you hav 2 option i.e. "Index" or nameof(Index)
         }
     }
 
