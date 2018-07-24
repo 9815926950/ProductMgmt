@@ -5,14 +5,38 @@
 // console.log(button1)
 
 
-$(document).ready(function(){
+// $(document).ready(function(){
+//     $button1=$("#button1")
+//     $test=  $(".test")
+//     $productName= $("#proudctName")
+//     $button1.on('click',function(){
+//         $(productName).val("hello world")
+//     })
+//      $test.on('click',()=>{
+//          alert($(productName).val())
+//      })
+// })
+
+
+$(()=>{
     $button1=$("#button1")
-    $test=  $(".test")
-    $productName= $("#proudctName")
-    $button1.on('click',function(){
-        $(productName).val("hello world")
+    $noButton=$("#btnNo")
+    $yesButton=$("#btnYes")
+
+
+
+    $button1.on('click',()=>{
+        $(".testmodal").modal('show')
+        $(button1).hide()
     })
-     $test.on('click',()=>{
-         alert($(productName).val())
-     })
+
+    $noButton.on('click',()=>{
+        console.log("no clicked")
+    })
+
+    $yesButton.on('click',()=>{
+        console.log("yes clicked")
+    })
+
+
 })
