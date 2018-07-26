@@ -17,25 +17,43 @@
 //      })
 // })
 
+// $(document).ready(function(){
+//   $button1=$("#button1")
+//   $button1.on('click'),()=>{
+//     $(".testmodal").modal('show')
+//   }
+// })
 
-$(()=>{
-    $button1=$("#button1")
-    $noButton=$("#btnNo")
-    $yesButton=$("#btnYes")
+
+$(() => {
+    $button1 = $("#button1")
+    $noButton = $("#btnNo")
+    $yesButton = $("#btnYes")
 
 
+        $button1.on('click', (e) => {
+            var eventSource = e.target;
+            console.log($(eventSource).html())
 
-    $button1.on('click',()=>{
-        $(".testmodal").modal('show')
-        $(button1).hide()
+            var productName = $(eventSource).data('product-name')
+            console.log(productName);
+
+        //$(".testmodal").modal('show')
+        // $(button1).hide()
     })
 
-    $noButton.on('click',()=>{
+    $noButton.on('click', () => {
         console.log("no clicked")
     })
 
-    $yesButton.on('click',()=>{
-        console.log("yes clicked")
+    $yesButton.on('click', (e) => {
+
+        
+        
+    
+    
+        //$(".testmodal").modal("hide")
+       // console.log("yes clicked")
     })
 
 
