@@ -70,6 +70,16 @@ namespace ProductMgmt.Controllers {
             }
 
         }
+        [HttpGet]
+        public IActionResult SayHello(string message)
+        {
+            
+            return Ok(message);
+        }
+        public IActionResult Calculate (int numberOne,int numberTwo)
+        {
+            return Ok(numberOne+numberTwo);
+        }
     }
 
 }

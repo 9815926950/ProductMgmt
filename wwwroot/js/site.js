@@ -29,16 +29,52 @@ $(() => {
     $button1 = $("#button1")
     $noButton = $("#btnNo")
     $yesButton = $("#btnYes")
+    $modalBody = $("#m-body")
 
 
-        $button1.on('click', (e) => {
-            var eventSource = e.target;
-            console.log($(eventSource).html())
+    
+    $numberOne=$("#numberOne")
+    $numberTwo=$("#numberTwo")
+    $btnCalculate=$("#calculate")
 
-            var productName = $(eventSource).data('product-name')
-            console.log(productName);
+    $btnCalculate.on('click',()=>{
+        $.ajax({
+            url:'/Product/Calculate',
+            method:'Get',
+            data:{ numberOne:$($numberOne).val(),numberTwo:$($numberTwo).val()},
+            success:function(result){
+                console.log(result)
 
-        //$(".testmodal").modal('show')
+            },
+            error:()=>{
+                console.log(error)
+            }
+        })
+    })
+
+
+    $button1.on('click', (e) => {
+        var eventSource = e.target;
+        // console.log($(eventSource).html())
+
+        //  var productName = $(eventSource).data('product-name')
+        //console.log(productName);
+
+        $.ajax({
+            url: "/Product/SayHello",
+            method: "Get",
+            data: { message: "hello my name is ramu ale" },
+            success: function (result) {
+                $($modalBody).html(result)
+                // console.log(result)
+            },
+            error: function (errr) {
+                console.log(err)
+            }
+        });
+
+        $(".testmodal").modal('show')
+        //$($modalBody).html(productName)
         // $(button1).hide()
     })
 
@@ -48,12 +84,8 @@ $(() => {
 
     $yesButton.on('click', (e) => {
 
-        
-        
-    
-    
-        //$(".testmodal").modal("hide")
-       // console.log("yes clicked")
+        $(".testmodal").modal("hide")
+        // console.log("yes clicked")
     })
 
 
