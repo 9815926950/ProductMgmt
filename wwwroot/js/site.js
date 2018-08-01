@@ -32,25 +32,76 @@ $(() => {
     $modalBody = $("#m-body")
 
 
-    
-    $numberOne=$("#numberOne")
-    $numberTwo=$("#numberTwo")
-    $btnCalculate=$("#calculate")
 
-    $btnCalculate.on('click',()=>{
+    $numberOne = $("#numberOne")
+    $numberTwo = $("#numberTwo")
+    $btnCalculate = $("#calculate")
+
+    $btnCalculate.on('click', () => {
         $.ajax({
-            url:'/Product/Calculate',
-            method:'Get',
-            data:{ numberOne:$($numberOne).val(),numberTwo:$($numberTwo).val()},
-            success:function(result){
+            url: '/Product/Calculate',
+            method: 'Get',
+            data: { numberOne: $($numberOne).val(), numberTwo: $($numberTwo).val() },
+            success: function (result) {
                 console.log(result)
 
             },
-            error:()=>{
+            error: () => {
                 console.log(error)
             }
         })
     })
+
+
+    $quantity = $("#quantity")
+    $rate = $("#rate")
+    $newcalculate = $("#NewCalculate")
+    $newcalculate.on('click', () => {
+        $.ajax({
+            url: '/Product/Amount',
+            method: 'Get',
+            data: { quantity: $($quantity).val(), rate: $($rate).val() },
+            success: function (newresult) {
+                console.log(newresult)
+            },
+            error: () => {
+                console.log(error)
+            }
+        })
+    })
+
+
+    var productId; //creating global variable for delete
+
+
+    $deleteButton = $(".delete-product")
+
+    $deleteButton.on('click', (e) => {
+        $(".testmodal").modal('show')
+        var target = e.target
+        productId = $(target).data('id')
+    })
+
+    $yesButton.on('click', () => {
+            $.ajax({
+            url: '/Product/Delete',
+            method: 'Get',
+            data: { id: productId },
+            success: function (result) {
+                $(".testmodal").modal('hide')
+            },
+            error: (error) => {
+                console.log(error)
+            }
+        })
+    })
+
+
+
+
+
+
+
 
 
     $button1.on('click', (e) => {
@@ -82,11 +133,11 @@ $(() => {
         console.log("no clicked")
     })
 
-    $yesButton.on('click', (e) => {
+    // $yesButton.on('click', (e) => {
 
-        $(".testmodal").modal("hide")
-        // console.log("yes clicked")
-    })
+    //     $(".testmodal").modal("hide")
+    //     // console.log("yes clicked")
+    // })
 
 
 })

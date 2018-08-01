@@ -22,12 +22,14 @@
                     asp-controller="Product"
                     asp-action="Edit"
                     asp-route-id="@product.Id">Edit</a>
-                <button class="btn btn-danger delete" 
+                <!-- <button class="btn btn-danger delete" 
                     data-controller="Product" 
                     data-action="Delete" 
                     data-id="@product.Id"
                     data-body-message="Are you sure want to delete this?"
-                    >Delete</button>
+                    >Delete</button> -->
+
+                <button class="btn btn-danger delete-product" data-id="@product.Id">Delete</button>
             </div>
         </div>
     </div>
@@ -52,3 +54,12 @@
 <input type="text" id="numberOne" name="numberOne"/>
 <input type="text" id="numberTwo" name="numberTwo"/>
 <button class="btn btn-success" id="calculate">Calculate</button>
+
+<br><br>
+<label>Quantity</label>
+<input type="text" id="quantity" name="quantity"/>
+<label>Rate</label>
+<input type="text" id="rate" name="rate"/>
+<button class="btn btn-danger" id="NewCalculate">Calculate</button>
+<label>Amount</label>
+<input type="text" id="amount" name="amount/>"

@@ -56,7 +56,7 @@ namespace ProductMgmt.Controllers {
         }
 
         // [HttpPost]
-
+        [HttpGet]
         public IActionResult Delete (int id) {
             try {
                 var product = _context.Products.FirstOrDefault (x => x.Id == id);
@@ -79,6 +79,10 @@ namespace ProductMgmt.Controllers {
         public IActionResult Calculate (int numberOne,int numberTwo)
         {
             return Ok(numberOne+numberTwo);
+        }
+        public IActionResult Amount(int quantity, int rate)
+        {
+            return Ok(quantity*rate);
         }
     }
 
